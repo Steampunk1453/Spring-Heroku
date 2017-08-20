@@ -33,7 +33,7 @@ public class ProductsRESTControllerTest {
                         .content(PRODUCT_JSON))
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.id").isNotEmpty())
-                .andExpect(jsonPath("$.name").value("Play Station 4"));
+                .andExpect(jsonPath("$.name").value("Arganen"));
     }
     @Test
     public void whenAnExistingProductIsRequested_ItWillBeReturned() throws Exception {
