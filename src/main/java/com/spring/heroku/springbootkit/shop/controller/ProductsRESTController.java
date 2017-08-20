@@ -12,13 +12,12 @@ public class ProductsRESTController {
     @RequestMapping(method=RequestMethod.POST)
     public ResponseEntity<Product> create(@RequestBody Product product) {
 
-        return new ResponseEntity<Product>(product.setId("1234").setName("Arganen")
-                .setDesc("Spring Power").setPrice(12.5),HttpStatus.CREATED);
+        return new ResponseEntity<Product>(product.setId("1234"), HttpStatus.CREATED);
     }
 
     @RequestMapping(value="{id}", method=RequestMethod.GET)
     public Product get(@PathVariable String id) {
 
-        return new Product().setId(id);
+        return new Product().setId(id).setName("Arganen").setDesc("Spring Power").setPrice(12.5);
     }
 }
