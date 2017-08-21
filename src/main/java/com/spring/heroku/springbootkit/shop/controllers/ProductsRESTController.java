@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("v1/products")
 public class ProductsRESTController {
@@ -25,4 +27,12 @@ public class ProductsRESTController {
 
         return productsService.get(id);
     }
+
+    @RequestMapping(method=RequestMethod.GET)
+    public List<Product> getAll() {
+
+        return productsService.getAll();
+    }
+
+
 }
