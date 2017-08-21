@@ -6,6 +6,8 @@ import com.spring.heroku.springbootkit.shop.services.ProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ProductsServiceImpl implements ProductsService {
     @Autowired
@@ -19,5 +21,10 @@ public class ProductsServiceImpl implements ProductsService {
     @Override
     public Product get(Integer id) {
         return productsRepository.findOne(id);
+    }
+
+    @Override
+    public List<Product> getAll() {
+        return productsRepository.findAll();
     }
 }
