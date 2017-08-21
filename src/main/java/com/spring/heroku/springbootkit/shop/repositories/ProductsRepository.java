@@ -1,8 +1,7 @@
 package com.spring.heroku.springbootkit.shop.repositories;
 
 import com.spring.heroku.springbootkit.shop.model.Product;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ProductsRepository extends CrudRepository<Product, Integer> {
-    Product findOneByName(String name);
+public interface ProductsRepository extends JpaRepository<Product, Integer> {
 }
