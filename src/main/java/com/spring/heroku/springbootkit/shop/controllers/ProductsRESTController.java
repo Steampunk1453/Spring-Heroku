@@ -1,7 +1,7 @@
-package com.spring.heroku.springbootkit.shop.controller;
+package com.spring.heroku.springbootkit.shop.controllers;
 
 import com.spring.heroku.springbootkit.shop.model.Product;
-import com.spring.heroku.springbootkit.shop.service.ProductsService;
+import com.spring.heroku.springbootkit.shop.services.ProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("v1/products")
 public class ProductsRESTController {
+
     @Autowired
     private ProductsService productsService;
 
@@ -20,7 +21,7 @@ public class ProductsRESTController {
     }
 
     @RequestMapping(value="{id}", method=RequestMethod.GET)
-    public Product get(@PathVariable String id) {
+    public Product get(@PathVariable Integer id) {
 
         return productsService.get(id);
     }

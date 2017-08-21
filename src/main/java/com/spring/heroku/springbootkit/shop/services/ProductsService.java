@@ -1,9 +1,9 @@
-package com.spring.heroku.springbootkit.shop.service;
+package com.spring.heroku.springbootkit.shop.services;
 
 import com.spring.heroku.springbootkit.shop.model.Product;
 
 public interface ProductsService {
 
     Product create(Product product);
-    Product get(String id);
+    Product get(Integer id);
 }

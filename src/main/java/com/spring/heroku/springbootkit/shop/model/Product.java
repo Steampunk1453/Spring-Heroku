@@ -1,16 +1,25 @@
 package com.spring.heroku.springbootkit.shop.model;
 
+
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.experimental.Accessors;
+import lombok.ToString;
+
+import javax.persistence.*;
 
 @Data
-@NoArgsConstructor
-@Accessors(chain=true)
+@ToString
+@Entity
+@Table(name = "PRODUCTS")
 public class Product {
 
-    private String id;
+    @Id
+    @Column(name = "ID")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
+    @Column(name = "NAME")
     private String name;
+    @Column(name = "DESC")
     private String desc;
+    @Column(name = "PRICE")
     private Double price;
 }
