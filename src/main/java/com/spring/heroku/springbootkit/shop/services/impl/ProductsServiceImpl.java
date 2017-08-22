@@ -20,7 +20,10 @@ public class ProductsServiceImpl implements ProductsService {
 
     @Override
     public Product get(Integer id) {
-        return productsRepository.findOne(id);
+        if(id != 0) {
+            return productsRepository.findOne(id);
+        }
+        return new Product();
     }
 
     @Override

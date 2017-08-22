@@ -1,15 +1,19 @@
 package com.spring.heroku.springbootkit.shop.services.impl;
 
 import com.spring.heroku.springbootkit.shop.model.Product;
+import com.spring.heroku.springbootkit.shop.repositories.ProductsRepository;
 import com.spring.heroku.springbootkit.shop.services.ProductsService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
@@ -19,26 +23,39 @@ import static org.mockito.Mockito.when;
 @RunWith(MockitoJUnitRunner.class)
 public class ProductsServiceImplTest {
 
+    @InjectMocks
+    ProductsServiceImpl productsService;
+
     @Mock
-    ProductsService productsService;
+    ProductsRepository productsRepository;
 
     @Test
     public void create() throws Exception {
-        when(productsService.create(any())).thenReturn(createProduct());
-        assertThat(productsService.create(createProduct()).getName(), is(equalTo("Arganen")));
+        when(productsRepository.save(createProduct())).thenReturn(createProduct());
+        Product product = productsService.create(createProduct());
+        assertThat(product.getName(), is(equalTo("Arganen")));
 
+    }
+
+    @Test
+    public void getIsNull() throws Exception {
+        when(productsRepository.findOne((Integer) any())).thenReturn(null);
+        Product product = productsService.get(new Integer(0));
+        assertThat(product.getDesc(), is(nullValue()));
     }
 
     @Test
     public void get() throws Exception {
-        when(productsService.get(any())).thenReturn(createProduct());
-        assertThat(productsService.get(new Integer(1)).getDesc(), is(equalTo("Docker power")));
+        when(productsRepository.findOne((Integer) any())).thenReturn(createProduct());
+        Product product = productsService.get(new Integer(1));
+        assertThat(product.getDesc(), is(equalTo("Docker power")));
     }
 
     @Test
     public void getAll() throws Exception {
-        when(productsService.getAll()).thenReturn(createProductsList());
-        assertThat(productsService.getAll().size(), is(equalTo(1)));
+        when(productsRepository.findAll()).thenReturn(createProductsList());
+        List<Product> productsList = productsService.getAll();
+        assertThat(productsList.size(), is(equalTo(1)));
     }
 
     private Product createProduct() {
