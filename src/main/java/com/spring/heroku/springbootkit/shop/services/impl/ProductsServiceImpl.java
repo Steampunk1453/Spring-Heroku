@@ -1,4 +1,4 @@
-package com.spring.heroku.springbootkit.shop.service.impl;
+package com.spring.heroku.springbootkit.shop.services.impl;
 
 import com.spring.heroku.springbootkit.shop.model.Product;
 import com.spring.heroku.springbootkit.shop.repositories.ProductsRepository;
@@ -20,7 +20,10 @@ public class ProductsServiceImpl implements ProductsService {
 
     @Override
     public Product get(Integer id) {
-        return productsRepository.findOne(id);
+        if(id != 0) {
+            return productsRepository.findOne(id);
+        }
+        return new Product();
     }
 
     @Override
