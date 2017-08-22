@@ -1,4 +1,4 @@
-package com.spring.heroku.springbootkit.shop.service.impl;
+package com.spring.heroku.springbootkit.shop.services.impl;
 
 import com.spring.heroku.springbootkit.shop.model.Product;
 import com.spring.heroku.springbootkit.shop.repositories.ProductsRepository;
