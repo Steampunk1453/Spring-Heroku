@@ -9,5 +9,10 @@ deploy:
   provider: heroku
   api_key:
     secure: "tNlJQ0hdwQUh8+uMjONro/DZNAeTe+gQtUPo97ub9K4xgF28ZjRhT0XUym3/gcq52ItVrxDsmUruLJwvY0+oGVVFODCgeZeBKSyFAAAJ/NBnBfGZ66kmn1gI/AgUxwtqaf2XhYeE60w4vKlnPzC8L3GkdZhPVR+zre5D78CQy8GUsg66Ag48XSdxmycQ4pge7nMQeO1d6k5DwsFlP4ZgDiJ5oGW4sCB8M7I4yMaDzJ9+W8ntM5bz/smbAH9eREq7nZ2wlAYo0aeGu3GmcKsp3JINqmIxWxSwN/9dX4hQytmT6Y8jmah/0kY4VcvrPvAA3WuhaOy4BFDZM+oZdi6ewr5ElRq7aL8j4n1lMtMF3HtQ3Mc2pFZo5vc6K7wVUd/TpZIyMS4oSRFkM7iQyUgikl8Z9sbBuD0VwmvGu/YnQ3GzbO05U0GuutpxiHmrBFO2zd1owS2Daa1rkX4pNHLR/V2HoMocoGY6u9BYWvPUdPgwBJWwd9bnjduHz6n1Vh1Fh4qtoRl/xz4TXX4ImEECOkNnN6ce0GsJvfJVfgOu10h+BTjCyOAfkFh0YfGGyqbU/OCvoni0W22kqVQpaVsD4zW9bvw5Yrj2A5dVHuRuJIlfbc+GpukfX9sXhDkGcWuRSzPJtHqYfJvJB7azVx8EV2OH6f/0UoGg6mUqRCaasTU="
+
+install:
+  - mvn test-compile -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+script:
+  - mvn test jacoco:report
 after_success:
   - mvn coveralls:report
