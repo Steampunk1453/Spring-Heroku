@@ -18,8 +18,8 @@ public class Product {
     private Integer id;
     @Column(name = "NAME")
     private String name;
-    @Column(name = "DESC")
-    private String desc;
+    @Column(name = "DESCRIPCION")
+    private String description;
     @Column(name = "PRICE")
     private Double price;
 }
