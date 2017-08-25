@@ -23,7 +23,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest(ProductsRESTController.class)
 public class ProductsRESTControllerTest {
 
-    private static final String PRODUCT_JSON = "{ \"name\": \"Arganen\", \"desc\": \"Super cool console\", \"price\": 399.0 }";
+    private static final String PRODUCT_JSON = "{ \"name\": \"Arganen\", \"description\": \"Super cool console\", \"price\": 399.0 }";
 
     @MockBean
     private ProductsService productsService;
